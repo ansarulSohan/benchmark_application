@@ -17,7 +17,7 @@ app.get("/bubbleSort", (req, res) => {
 });
 
 app.get("/semiPrime", (req, res) => {
-  const number = req.query.number | Number.MAX_SAFE_INTEGER;
+  const number = parseInt(req.query.number) | Number.MAX_SAFE_INTEGER;
   console.log(number);
   semiPrimeBenchmark(number);
   res.status(200).send("Semi prime benchmark completed");
