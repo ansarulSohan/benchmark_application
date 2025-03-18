@@ -13,19 +13,14 @@ function isSemiPrime(n) {
 }
 
 function findAllSemiPrime(n) {
-  const semiPrimes = [];
   for (let i = 2; i <= n; i++) {
-    if (isSemiPrime(i)) {
-      semiPrimes.push(i);
-    }
+    isSemiPrime(i);
   }
-  return semiPrimes;
 }
 
 function semiPrimeBenchmark(num) {
   const start = performance.now();
-  const x = findAllSemiPrime(num);
-  console.log(x);
+  findAllSemiPrime(num);
   const end = performance.now();
   console.log(`isSemiPrime benchmark took ${end - start} milliseconds`);
   console.log(`isSemiPrime benchmark took ${(end - start) / 60000} Minutes`);
