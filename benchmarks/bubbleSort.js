@@ -24,6 +24,7 @@ function bubbleSortBenchmark(length) {
   bubbleSort(arr);
   const end = performance.now();
   console.log(`Bubble sort benchmark took ${end - start} milliseconds`);
+  console.log(`Bubble sort benchmark took ${(end - start) / 60000} Minutes`);
 }
 
 module.exports = bubbleSortBenchmark;

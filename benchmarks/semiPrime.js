@@ -28,6 +28,7 @@ function semiPrimeBenchmark(num) {
   console.log(x);
   const end = performance.now();
   console.log(`isSemiPrime benchmark took ${end - start} milliseconds`);
+  console.log(`isSemiPrime benchmark took ${(end - start) / 60000} Minutes`);
 }
 
 module.exports = semiPrimeBenchmark;
