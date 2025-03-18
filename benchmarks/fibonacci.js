@@ -1,0 +1,14 @@
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+function fibonacciBenchmark(n) {
+  const start = performance.now();
+  const x = fibonacci(n);
+  console.log(x);
+  const end = performance.now();
+  console.log(`Fibonacci benchmark took ${end - start} milliseconds`);
+}
+
+module.exports = fibonacciBenchmark;
