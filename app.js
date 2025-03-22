@@ -1,5 +1,13 @@
 const { performance } = require("perf_hooks");
 const express = require("express");
+
+const os = require("os");
+const cluster = require("cluster");
+
+const numberOfCores = os.cpus().length;
+
+
+
 const app = express();
 
 const DEFAULT_NUMBER = 99999999;
@@ -42,6 +50,20 @@ app.get("/fibonacci", (req, res) => {
   res.status(200).send("Fibonacci benchmark completed");
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+if (cluster.isMaster) {
+  console.log(`Master process is running on ${numberOfCores} cores`);
+  for (let i = 0; i < numberOfCores; i++) {
+    cluster.fork();
+  }
+  cluster.on("exit", (worker, code, signal) => {
+    console.log(`Worker ${worker.id} died`);
+    cluster.fork();
+  });
+} else {
+  console.log(`Worker ${process.pid} started`);
+  app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+  });
+}
+
+
