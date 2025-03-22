@@ -18,7 +18,8 @@ const generateRandomArray = (length) => {
   return arr;
 };
 
-function bubbleSortBenchmark(length) {
+function bubbleSortBenchmark(length=100000) {
+  console.log(`Starting buubleSortBenchmark with length ${length}`);
   const arr = generateRandomArray(length);
   const start = performance.now();
   bubbleSort(arr);

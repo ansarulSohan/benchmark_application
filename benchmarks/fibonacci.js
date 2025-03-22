@@ -4,6 +4,7 @@ function fibonacci(n) {
 }
 
 function fibonacciBenchmark(n) {
+  console.log(`Starting fibonacci benchmark for ${n}`);
   const start = performance.now();
   const x = fibonacci(n);
   console.log(x);
