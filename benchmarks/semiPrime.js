@@ -19,6 +19,7 @@ function findAllSemiPrime(n) {
 }
 
 function semiPrimeBenchmark(num) {
+  console.log(`Starting isSemiPrime benchmark for ${num}`);
   const start = performance.now();
   findAllSemiPrime(num);
   const end = performance.now();
