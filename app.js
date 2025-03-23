@@ -1,13 +1,9 @@
 const { performance } = require("perf_hooks");
 const express = require("express");
-
 const os = require("os");
 const cluster = require("cluster");
 
 const numberOfCores = os.cpus().length;
-
-
-
 const app = express();
 
 const DEFAULT_NUMBER = 99999999;
@@ -17,8 +13,9 @@ const semiPrimeBenchmark = require("./benchmarks/semiPrime");
 const fibonacciBenchmark = require("./benchmarks/fibonacci");
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello World! API is running!");
 });
+
 
 app.get("/bubbleSort", (req, res) => {
   const number = req.query.number;
@@ -60,9 +57,10 @@ if (cluster.isMaster) {
     cluster.fork();
   });
 } else {
-  console.log(`Worker ${process.pid} started`);
-  app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+  const port = process.env.PORT || 3000;
+  console.log(`Worker ${process.pid} started at ${port}`);
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
   });
 }
 
