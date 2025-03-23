@@ -8,6 +8,12 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3010
+# Expose the port the app runs on
+EXPOSE 3030
 
-CMD ['npm', 'start']
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3030
+
+# Start the application
+CMD ["node", "app.js"]
