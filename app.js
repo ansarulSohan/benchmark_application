@@ -16,14 +16,14 @@ app.get("/", (req, res) => {
   res.send("Hello World! API is running!");
 });
 
-
-app.get("/bubbleSort", (req, res) => {
-  const number = req.query.number;
-  if (!number) {
-    number = DEFAULT_NUMBER;
+app.get("/bubbleSort", async (req, res) => {
+  try {
+    const results = await bubbleSortBenchmark();
+    res.status(200).json(results);
+  } catch (error) {
+    console.error('Error in bubbleSort endpoint:', error);
+    res.status(500).json({ error: error.message });
   }
-  bubbleSortBenchmark(number);
-  res.status(200).send("Bubble sort benchmark completed");
 });
 
 app.get("/semiPrime", (req, res) => {
