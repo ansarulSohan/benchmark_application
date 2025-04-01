@@ -27,12 +27,12 @@ app.get("/bubbleSort", async (req, res) => {
 });
 
 app.get("/semiPrime", (req, res) => {
-  console.log(req.query.number);
+  console.log(`[semiPrime] Query Parameter: ${req.query.number}`);
   const num = parseInt(req.query.number);
   if (!num) {
     num = DEFAULT_NUMBER;
+    console.log("[semiPrime] Proceeding with default number.")
   }
-  console.log(num);
   semiPrimeBenchmark(num);
   res.status(200).send("Semi prime benchmark completed");
 });
