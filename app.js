@@ -47,21 +47,23 @@ app.get("/fibonacci", (req, res) => {
   res.status(200).send("Fibonacci benchmark completed");
 });
 
-if (cluster.isMaster) {
-  console.log(`Master process is running on ${numberOfCores} cores`);
-  for (let i = 0; i < numberOfCores; i++) {
-    cluster.fork();
-  }
-  cluster.on("exit", (worker, code, signal) => {
-    console.log(`Worker ${worker.id} died`);
-    cluster.fork();
-  });
-} else {
-  const port = process.env.PORT || 3000;
-  console.log(`Worker ${process.pid} started at ${port}`);
-  app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
-}
+// if (cluster.isMaster) {
+//   console.log(`Master process is running on ${numberOfCores} cores`);
+//   for (let i = 0; i < numberOfCores; i++) {
+//     cluster.fork();
+//   }
+//   cluster.on("exit", (worker, code, signal) => {
+//     console.log(`Worker ${worker.id} died`);
+//     cluster.fork();
+//   });
+// } else {
+//   const port = process.env.PORT || 3000;
+//   console.log(`Worker ${process.pid} started at ${port}`);
+//   app.listen(port, () => {
+//     console.log(`Server is running on port ${port}`);
+//   });
+// }
+
+app.listen(3000, () => {console.log("Server running at port 3000")})
 
 
