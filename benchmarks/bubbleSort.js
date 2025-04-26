@@ -14,30 +14,25 @@ function bubbleSort(arr) {
   return arr;
 }
 
-async function bubbleSortBenchmark() {
+async function bubbleSortBenchmark(length = 10000) {
   try {
     // Read the sample array from JSON file
     const sampleArrayPath = path.join(__dirname, '../data/array_sample_1.json');
     const sampleData = JSON.parse(fs.readFileSync(sampleArrayPath, 'utf8'));
-    const arr = sampleData.array;
+    const arr = sampleData.array.slice(0, length);
 
     console.log(`Starting bubbleSortBenchmark with array length ${arr.length}`);
-    console.log('First 10 elements of input array:', arr.slice(0, 10));
 
     const start = performance.now();
     const sortedArr = bubbleSort([...arr]); // Create a copy to not modify original
     const end = performance.now();
 
-    console.log('First 10 elements of sorted array:', sortedArr.slice(0, 10));
     console.log(`Bubble sort benchmark took ${end - start} milliseconds`);
-    console.log(`Bubble sort benchmark took ${(end - start) / 60000} Minutes`);
 
     return {
       inputLength: arr.length,
       executionTime: end - start,
-      executionTimeMinutes: (end - start) / 60000,
-      firstTenInput: arr.slice(0, 10),
-      firstTenOutput: sortedArr.slice(0, 10)
+      executionTimeInMinutes: (end - start) / 60000,
     };
   } catch (error) {
     console.error('Error in bubbleSortBenchmark:', error);

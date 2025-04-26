@@ -11,6 +11,8 @@ const DEFAULT_NUMBER = 99999999;
 const bubbleSortBenchmark = require("./benchmarks/bubbleSort");
 const semiPrimeBenchmark = require("./benchmarks/semiPrime");
 const fibonacciBenchmark = require("./benchmarks/fibonacci");
+const hashingBenchmark = require("./benchmarks/hashing");
+const factorialBenchmark = require("./benchmarks/factorial");
 
 app.get("/", (req, res) => {
   res.send("Hello World! API is running!");
@@ -26,6 +28,12 @@ app.get("/bubbleSort", async (req, res) => {
   }
 });
 
+app.get("/factorial", (req, res) => {
+  const num = req.query.number || 25;
+  factorialBenchmark(num);
+  res.status(200).send("Factorial benchmark completed");
+});
+
 app.get("/semiPrime", (req, res) => {
   console.log(`[semiPrime] Query Parameter: ${req.query.number}`);
   const num = parseInt(req.query.number);
@@ -35,6 +43,13 @@ app.get("/semiPrime", (req, res) => {
   }
   semiPrimeBenchmark(num);
   res.status(200).send("Semi prime benchmark completed");
+});
+
+app.get("/hashing", (req, res) => {
+  const duration = req.query.duration || 600000;
+  const input = req.query.input || "Random Input String";
+  hashingBenchmark(duration, input);
+  res.status(200).send("Hashing benchmark completed");
 });
 
 app.get("/fibonacci", (req, res) => {
