@@ -1,0 +1,15 @@
+{
+  "Args": ["app.js"],
+  "Files": [
+    "app.js",
+    "package.json",
+    "./data/randomData.js",
+    "./data/array_sample_1.json",
+    "./benchmarks/bubbleSort.js",
+    "./benchmarks/factorial.js",
+    "./benchmarks/fibonacci.js",
+    "./benchmarks/hashing.js",
+    "./benchmarks/semiPrime.js"
+  ],
+  "Dirs": ["node_modules", "data", "benchmarks"]
+}
