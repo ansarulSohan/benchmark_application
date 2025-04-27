@@ -14,6 +14,9 @@ const fibonacciBenchmark = require("./benchmarks/fibonacci");
 const hashingBenchmark = require("./benchmarks/hashing");
 const factorialBenchmark = require("./benchmarks/factorial");
 
+
+const data = require("./data/randomData");
+
 app.get("/", (req, res) => {
   res.send("Hello World! API is running!");
 });
@@ -62,6 +65,11 @@ app.get("/fibonacci", (req, res) => {
   res.status(200).send("Fibonacci benchmark completed");
 });
 
+app.get("/data", (req, res) => {
+  const randomNumber = Math.floor(Math.random() * 1000) + 1;
+  res.send(data[randomNumber]);
+});
+
 // if (cluster.isMaster) {
 //   console.log(`Master process is running on ${numberOfCores} cores`);
 //   for (let i = 0; i < numberOfCores; i++) {
@@ -79,6 +87,6 @@ app.get("/fibonacci", (req, res) => {
 //   });
 // }
 
-app.listen(3000, () => {console.log("Server running at port 3000")})
+app.listen(3000, () => { console.log("Server running at port 3000") })
 
 
