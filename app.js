@@ -23,7 +23,8 @@ app.get("/", (req, res) => {
 
 app.get("/bubbleSort", async (req, res) => {
   try {
-    const results = await bubbleSortBenchmark();
+    const length = parseInt(req.query.length) || 10000;
+    const results = await bubbleSortBenchmark(length);
     res.status(200).json(results);
   } catch (error) {
     console.error('Error in bubbleSort endpoint:', error);
@@ -49,7 +50,7 @@ app.get("/semiPrime", (req, res) => {
 });
 
 app.get("/hashing", (req, res) => {
-  const duration = req.query.duration || 600000;
+  const duration = req.query.time || 600000;
   const input = req.query.input || "Random Input String";
   hashingBenchmark(duration, input);
   res.status(200).send("Hashing benchmark completed");

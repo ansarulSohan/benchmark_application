@@ -19,8 +19,8 @@ async function bubbleSortBenchmark(length = 10000) {
     // Read the sample array from JSON file
     const sampleArrayPath = path.join(__dirname, '../data/array_sample_1.json');
     const sampleData = JSON.parse(fs.readFileSync(sampleArrayPath, 'utf8'));
-    const arr = sampleData.array.slice(0, length);
 
+    const arr = sampleData.array.slice(0, length);
     console.log(`Starting bubbleSortBenchmark with array length ${arr.length}`);
 
     const start = performance.now();

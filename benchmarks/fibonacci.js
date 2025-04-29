@@ -9,7 +9,6 @@ function fibonacciBenchmark(n) {
   console.log(`Starting fibonacci benchmark for ${n}`);
   const start = performance.now();
   const x = fibonacci(n);
-  console.log(x);
   const end = performance.now();
   console.log(`Fibonacci benchmark took ${end - start} milliseconds`);
   console.log(`Fibonacci benchmark took ${(end - start) / 60000} Minutes`);
