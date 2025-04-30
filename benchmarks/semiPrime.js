@@ -15,8 +15,8 @@ function isSemiPrime(n) {
 function findAllSemiPrime(n) {
   let semiPrime_count = 0;
   for (let i = 2; i <= n; i++) {
-    if(isSemiPrime(i)) semiPrime_count++;
-    
+    if (isSemiPrime(i)) semiPrime_count++;
+
   }
   return semiPrime_count;
 }
@@ -32,7 +32,9 @@ function semiPrimeBenchmark(num) {
   return {
     input: num,
     output: semiPrime_count,
-    duration: end - start
+    duration: end - start,
+    functionName: 'semiPrime',
+    output: "Found " + semiPrime_count + " in range of 0 - " + num
   }
 }
 

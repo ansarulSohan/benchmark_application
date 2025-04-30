@@ -11,8 +11,12 @@ function fibonacciBenchmark(n) {
   const x = fibonacci(n);
   const end = performance.now();
   console.log(`Fibonacci benchmark took ${end - start} milliseconds`);
-  console.log(`Fibonacci benchmark took ${(end - start) / 60000} Minutes`);
-  return x;
+  return {
+    inputLength: n,
+    executionTime: end - start,
+    functionName: 'fibonacci',
+    output: x
+  }
 }
 
 module.exports = fibonacciBenchmark;

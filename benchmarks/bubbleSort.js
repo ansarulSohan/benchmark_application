@@ -32,7 +32,8 @@ async function bubbleSortBenchmark(length = 10000) {
     return {
       inputLength: arr.length,
       executionTime: end - start,
-      executionTimeInMinutes: (end - start) / 60000,
+      functionName: 'bubbleSort',
+      output: "N/A"
     };
   } catch (error) {
     console.error('Error in bubbleSortBenchmark:', error);
