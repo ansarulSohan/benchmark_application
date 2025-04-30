@@ -35,8 +35,8 @@ app.get("/factorial", (req, res) => {
 app.get("/semiPrime", (req, res) => {
   console.log(`[semiPrime] Query Parameter: ${req.query.number}`);
   const num = parseInt(req.query.number || DEFAULT_NUMBER);
-  semiPrimeBenchmark(num);
-  res.status(200).send("Semi prime benchmark completed");
+  const result = semiPrimeBenchmark(num);
+  res.status(200).send(result);
 });
 
 app.get("/hashing", (req, res) => {
