@@ -42,7 +42,7 @@ app.get("/semiPrime", (req, res) => {
 app.get("/hashing", (req, res) => {
   const duration = req.query.time || 600000;
   const input = req.query.input || "Random Input String";
-  hashingBenchmark(duration, input);
+  const result = hashingBenchmark(duration, input);
   res.status(200).send(result);
 });
 
