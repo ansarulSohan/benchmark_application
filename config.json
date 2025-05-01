@@ -11,5 +11,9 @@
     "./benchmarks/hashing.js",
     "./benchmarks/semiPrime.js"
   ],
-  "Dirs": ["node_modules", "data", "benchmarks"]
+  "Dirs": ["node_modules", "data", "benchmarks"],
+  "Runtime": "node",
+  "RunConfig": {
+    "CPUs": 1
+  }
 }

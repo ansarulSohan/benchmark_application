@@ -40,7 +40,7 @@ async function complexHashing(durationMs, input = 'default') {
         durationMs: actualDuration,
         hashesPerSecond: (iterations / (actualDuration / 1000)).toFixed(2),
         input: input,
-        functionName: 'complexHashing',
+        functionName: 'hashing',
         output: "N/A"
     };
 }
