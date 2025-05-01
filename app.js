@@ -43,7 +43,6 @@ app.get("/hashing", async (req, res) => {
   const duration = req.query.time || 600000;
   const input = req.query.input || "Random Input String";
   const result = await hashingBenchmark(duration, input);
-  console.log(result);
   res.status(200).send(result);
 });
 
