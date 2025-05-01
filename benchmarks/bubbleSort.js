@@ -42,6 +42,4 @@ async function bubbleSortBenchmark(length = 200000) {
   }
 }
 
-bubbleSortBenchmark();
-
 module.exports = bubbleSortBenchmark;
