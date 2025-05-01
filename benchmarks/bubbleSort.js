@@ -25,8 +25,10 @@ async function bubbleSortBenchmark(length = 200000) {
     console.log(`Starting bubbleSortBenchmark with array length ${arr.length}`);
 
     const start = performance.now();
+    const startTime = Date.now();
     const sortedArr = bubbleSort([...arr]); // Create a copy to not modify original
     const end = performance.now();
+    const endTime = Date.now();
 
     console.log(`Bubble sort benchmark took ${end - start} milliseconds`);
 
@@ -34,7 +36,9 @@ async function bubbleSortBenchmark(length = 200000) {
       input: arr.length,
       executionTime: end - start,
       functionName: 'bubbleSort',
-      output: "N/A"
+      output: "N/A",
+      startTime: startTime,
+      endTime: endTime
     };
   } catch (error) {
     console.error('Error in bubbleSortBenchmark:', error);

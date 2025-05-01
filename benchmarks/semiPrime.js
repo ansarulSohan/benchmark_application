@@ -24,8 +24,10 @@ function findAllSemiPrime(n) {
 function semiPrimeBenchmark(num) {
   console.log(`Starting isSemiPrime benchmark for ${num}`);
   const start = performance.now();
+  const startTime = Date.now();
   const semiPrime_count = findAllSemiPrime(num);
   const end = performance.now();
+  const endTime = Date.now();
   console.log(`Found ${semiPrime_count} in range of 0 - ${num}`)
   console.log(`isSemiPrime benchmark took ${end - start} milliseconds`);
   console.log(`isSemiPrime benchmark took ${(end - start) / 60000} Minutes`);
@@ -34,6 +36,8 @@ function semiPrimeBenchmark(num) {
     output: semiPrime_count,
     executionTime: end - start,
     functionName: 'semiPrime',
+    startTime: startTime,
+    endTime: endTime
   }
 }
 

@@ -7,7 +7,8 @@ const crypto = require('crypto');
  * @returns {Object} - Object containing hash results and statistics
  */
 async function complexHashing(durationMs, input = 'default') {
-    const startTime = Date.now();
+    const startTime = performance.now();
+    const startTime2 = Date.now();
     let iterations = 0;
     let lastHash = input;
     const hashTypes = ['sha256', 'sha512', 'md5', 'sha1'];
@@ -26,41 +27,46 @@ async function complexHashing(durationMs, input = 'default') {
         return currentHash;
     }
 
-    while (Date.now() - startTime < durationMs) {
+    while (performance.now() - startTime < durationMs) {
         lastHash = performComplexHash(lastHash);
         iterations++;
     }
 
-    const endTime = Date.now();
+    const endTime = performance.now();
+    const endTime2 = Date.now();
     const actualDuration = endTime - startTime;
+    console.log(actualDuration);
+    console.log(iterations);
 
     return {
         finalHash: lastHash,
         iterations: iterations,
         executionTime: actualDuration,
-        input: input,
+        input: durationMs,
         functionName: 'hashing',
-        output: (iterations / (actualDuration / 1000)).toFixed(2)
+        output: (iterations / (actualDuration / 1000)).toFixed(2),
+        startTime: startTime2,
+        endTime: endTime2
     };
 }
 
-if (require.main === module) {
-    const duration = process.argv[2] ? parseInt(process.argv[2]) : 5000; // Default 5 seconds
-    const input = process.argv[3] || 'default';
+// if (require.main === module) {
+//     const duration = process.argv[2] ? parseInt(process.argv[2]) : 5000; // Default 5 seconds
+//     const input = process.argv[3] || 'default';
 
-    console.log("Hashing for " + duration + "ms || " + `${duration / 60000}` + " minutes");
-    console.log("Input: " + input);
+//     console.log("Hashing for " + duration + "ms || " + `${duration / 60000}` + " minutes");
+//     console.log("Input: " + input);
 
-    complexHashing(duration, input)
-        .then(results => {
-            console.log(`Final Hash: ${results.finalHash}`);
-            console.log(`Iterations: ${results.iterations}`);
-            console.log(`Duration: ${results.durationMs}ms`);
-            console.log(`Hashes per second: ${results.hashesPerSecond}`);
-        })
-        .catch(error => {
-            console.error('Error during hashing:', error);
-        });
-}
+//     complexHashing(duration, input)
+//         .then(results => {
+//             console.log(`Final Hash: ${results.finalHash}`);
+//             console.log(`Iterations: ${results.iterations}`);
+//             console.log(`Duration: ${results.durationMs}ms`);
+//             console.log(`Hashes per second: ${results.hashesPerSecond}`);
+//         })
+//         .catch(error => {
+//             console.error('Error during hashing:', error);
+//         });
+// }
 
 module.exports = complexHashing; 

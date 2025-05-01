@@ -8,14 +8,18 @@ function fibonacci(n) {
 function fibonacciBenchmark(n) {
   console.log(`Starting fibonacci benchmark for ${n}`);
   const start = performance.now();
+  const startTime = Date.now();
   const x = fibonacci(n);
   const end = performance.now();
+  const endTime = Date.now();
   console.log(`Fibonacci benchmark took ${end - start} milliseconds`);
   return {
     input: n,
     executionTime: end - start,
     functionName: 'fibonacci',
-    output: x
+    output: x,
+    startTime: startTime,
+    endTime: endTime
   }
 }
 
