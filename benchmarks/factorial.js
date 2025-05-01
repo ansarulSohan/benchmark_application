@@ -13,7 +13,8 @@ async function factorialBenchmark(num = 25) {
     return {
         input: num,
         output: result,
-        duration: duration
+        executionTime: duration,
+        functionName: 'factorial'
     }
 }
 

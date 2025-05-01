@@ -32,9 +32,8 @@ function semiPrimeBenchmark(num) {
   return {
     input: num,
     output: semiPrime_count,
-    duration: end - start,
+    executionTime: end - start,
     functionName: 'semiPrime',
-    output: "Found " + semiPrime_count + " in range of 0 - " + num
   }
 }
 

@@ -37,11 +37,10 @@ async function complexHashing(durationMs, input = 'default') {
     return {
         finalHash: lastHash,
         iterations: iterations,
-        durationMs: actualDuration,
-        hashesPerSecond: (iterations / (actualDuration / 1000)).toFixed(2),
+        executionTime: actualDuration,
         input: input,
         functionName: 'hashing',
-        output: "N/A"
+        output: (iterations / (actualDuration / 1000)).toFixed(2)
     };
 }
 
