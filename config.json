@@ -13,6 +13,7 @@
   ],
   "Dirs": ["node_modules", "data", "benchmarks"],
   "RunConfig": {
-    "CPUs": 1
+    "CPUs": 1,
+    "Accel": true
   }
 }
