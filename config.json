@@ -5,7 +5,7 @@
     "package.json",
     "./data/randomData.js",
     "./data/array_sample_1.json",
-    "./data/array_sample_2.json"
+    "./data/array_sample_2.json",
     "./benchmarks/bubbleSort.js",
     "./benchmarks/factorial.js",
     "./benchmarks/fibonacci.js",
