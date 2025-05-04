@@ -32,19 +32,18 @@ const merge = (left, right) => {
 
 async function mergeSortBenchmark(length = 200000) {
   try {
-    const sampleArrayPath = path.join(__dirname, '../data/array_sample_1.json');
+    const sampleArrayPath = path.join(__dirname, '../data/array_sample_2.json');
     const sampleData = JSON.parse(fs.readFileSync(sampleArrayPath, 'utf8'));
 
 
     const arr = sampleData.array.slice(0, length);
-    console.log(`Starting bubbleSortBenchmark with array length ${arr.length}`);
+    console.log(`Starting merge sort with array length ${arr.length}`);
 
     const start = performance.now();
     const startTime = Date.now();
-    const sortedArr = mergeSort([...arr]); // Create a copy to not modify original
+    const sortedArr = mergeSort([...arr]);
     const end = performance.now();
     const endTime = Date.now();
-
     console.log(`merge sort benchmark took ${end - start} milliseconds`);
 
     return {
