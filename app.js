@@ -82,6 +82,18 @@ app.get("/data", (req, res) => {
   }
 });
 
+app.get("/mergeSort", async (req, res) => {
+  try {
+    const length = parseInt(req.query.length) || 200000;
+    const results = await mergeSortBenchmark(length);
+    res.status(200).send(results);
+  } catch (error) {
+    console.error("Error in mergeSort endpoint:", error);
+    res.status(500).send(error.message);
+  }
+});
+
+
 app.listen(3000, () => {
   console.log("Server running at port 3000");
 });

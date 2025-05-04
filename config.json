@@ -9,7 +9,8 @@
     "./benchmarks/factorial.js",
     "./benchmarks/fibonacci.js",
     "./benchmarks/hashing.js",
-    "./benchmarks/semiPrime.js"
+    "./benchmarks/semiPrime.js",
+    "./benchmarks/mergeSort.js"
   ],
   "Dirs": ["node_modules", "data", "benchmarks"],
   "RunConfig": {
