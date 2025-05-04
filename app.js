@@ -9,6 +9,7 @@ const semiPrimeBenchmark = require("./benchmarks/semiPrime");
 const fibonacciBenchmark = require("./benchmarks/fibonacci");
 const hashingBenchmark = require("./benchmarks/hashing");
 const factorialBenchmark = require("./benchmarks/factorial");
+const mergeSortBenchmark = require("./benchmarks/mergeSort");
 const data = require("./data/randomData");
 
 app.get("/", (req, res) => {
