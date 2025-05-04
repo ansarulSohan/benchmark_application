@@ -12,11 +12,11 @@
     "./benchmarks/hashing.js",
     "./benchmarks/semiPrime.js",
     "./benchmarks/mergeSort.js"
-
   ],
   "Dirs": ["node_modules", "data", "benchmarks"],
   "RunConfig": {
     "CPUs": 1,
+    "Memory": "512M",
     "Accel": true
   }
 }
