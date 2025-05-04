@@ -11,18 +11,15 @@ async function complexHashing(durationMs, input = 'default') {
     const startTime2 = Date.now();
     let iterations = 0;
     let lastHash = input;
-    const hashTypes = ['sha256', 'sha512', 'md5', 'sha1'];
+    const hashTypes = ['sha256'];
 
     function performComplexHash(input) {
         let currentHash = input;
-
-        for (const algo of hashTypes) {
-            const hash = crypto.createHash(algo);
-            hash.update(currentHash);
-            currentHash = hash.digest('hex');
-            currentHash = currentHash.split('').reverse().join('');
-            currentHash = Buffer.from(currentHash).toString('base64');
-        }
+        const hash = crypto.createHash(hashTypes[0]);
+        hash.update(currentHash);
+        currentHash = hash.digest('hex');
+        currentHash = currentHash.split('').reverse().join('');
+        currentHash = Buffer.from(currentHash).toString('base64');
 
         return currentHash;
     }
@@ -37,6 +34,7 @@ async function complexHashing(durationMs, input = 'default') {
     const actualDuration = endTime - startTime;
     console.log(actualDuration);
     console.log(iterations);
+    if (global.gc) global.gc();
 
     return {
         finalHash: lastHash,

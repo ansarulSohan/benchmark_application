@@ -10,6 +10,7 @@ async function factorialBenchmark(num = 25) {
     const endTime = Date.now();
     const duration = endTime - startTime;
     console.log(`Factorial of 10:${result} and took ${duration}ms`);
+    if (global.gc) global.gc();
     return {
         input: num,
         output: result,

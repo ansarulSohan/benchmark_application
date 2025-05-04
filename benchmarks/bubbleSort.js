@@ -14,22 +14,23 @@ function bubbleSort(arr) {
   return arr;
 }
 
-async function bubbleSortBenchmark(length = 200000) {
+async function bubbleSortBenchmark(length = 500000) {
   try {
     const sampleArrayPath = path.join(__dirname, '../data/array_sample_2.json');
     const sampleData = JSON.parse(fs.readFileSync(sampleArrayPath, 'utf8'));
+    console.log(sampleData.array.length);
 
     const arr = sampleData.array.slice(0, length);
     console.log(`Starting bubbleSortBenchmark with array length ${arr.length}`);
 
     const start = performance.now();
     const startTime = Date.now();
-    const sortedArr = bubbleSort([...arr]); // Create a copy to not modify original
+    const sortedArr = bubbleSort([...arr]);
     const end = performance.now();
     const endTime = Date.now();
 
     console.log(`Bubble sort benchmark took ${end - start} milliseconds`);
-
+    if (global.gc) global.gc();
     return {
       input: arr.length,
       executionTime: end - start,
@@ -43,5 +44,4 @@ async function bubbleSortBenchmark(length = 200000) {
     throw error;
   }
 }
-
 module.exports = bubbleSortBenchmark;

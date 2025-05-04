@@ -31,6 +31,7 @@ function semiPrimeBenchmark(num) {
   console.log(`Found ${semiPrime_count} in range of 0 - ${num}`)
   console.log(`isSemiPrime benchmark took ${end - start} milliseconds`);
   console.log(`isSemiPrime benchmark took ${(end - start) / 60000} Minutes`);
+  if (global.gc) global.gc();
   return {
     input: num,
     output: semiPrime_count,
