@@ -30,8 +30,6 @@ const merge = (left, right) => {
 
 
 
-
-
 async function mergeSortBenchmark(length = 200000) {
   try {
     const sampleArrayPath = path.join(__dirname, '../data/array_sample_1.json');
@@ -62,3 +60,5 @@ async function mergeSortBenchmark(length = 200000) {
     throw error;
   }
 }
+
+module.exports = mergeSortBenchmark;
