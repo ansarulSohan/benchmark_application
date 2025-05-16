@@ -59,4 +59,5 @@ async function mergeSortBenchmark(length = 11500000) {
     throw error;
   }
 }
+
 module.exports = mergeSortBenchmark;
